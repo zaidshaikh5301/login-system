@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In</title>
+<meta name="description" content="Sign in to your account">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+  <main class="login-card" role="form" aria-labelledby="loginTitle">
+    <div class="login-header">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <h1 id="loginTitle">Welcome back</h1>
+      <p>Sign in to continue to your account</p>
+    </div>
+
+    <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="theme-icon sun" aria-hidden="true">&#9728;</span>
+      <span class="theme-icon moon" aria-hidden="true">&#9788;</span>
+    </button>
+
+    <form id="loginForm" novalidate>
+      <div role="alert" aria-live="polite" id="globalMessage" class="global-message hidden"></div>
+
+      <div class="field-group">
+        <label for="email">Email address</label>
+        <div class="input-wrapper">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            placeholder="name@company.com"
+            aria-describedby="emailError emailHint"
+          >
+        </div>
+        <span id="emailError" class="field-error" role="alert" aria-live="polite"></span>
+        <span id="emailHint" class="field-hint">We'll never share your email.</span>
+      </div>
+
+      <div class="field-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper password-wrapper">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+            aria-describedby="passwordError strengthMeter capsLockWarning"
+          >
+          <button type="button" id="togglePassword" class="toggle-btn" aria-label="Show password" aria-pressed="false">
+            <span class="toggle-icon">&#128065;</span>
+          </button>
+        </div>
+        <span id="passwordError" class="field-error" role="alert" aria-live="polite"></span>
+        <div id="capsLockWarning" class="caps-warning hidden">Caps Lock is on</div>
+        <div class="password-checklist" id="passwordChecklist">
+          <div class="checklist-item" id="check-length">
+            <span class="check">&#10003;</span>
+            <span class="label">At least 8 characters</span>
+          </div>
+          <div class="checklist-item" id="check-uppercase">
+            <span class="check">&#10003;</span>
+            <span class="label">Uppercase letter</span>
+          </div>
+          <div class="checklist-item" id="check-lowercase">
+            <span class="check">&#10003;</span>
+            <span class="label">Lowercase letter</span>
+          </div>
+          <div class="checklist-item" id="check-number">
+            <span class="check">&#10003;</span>
+            <span class="label">Number</span>
+          </div>
+          <div class="checklist-item" id="check-symbol">
+            <span class="check">&#10003;</span>
+            <span class="label">Symbol</span>
+          </div>
+        </div>
+        <div id="strengthMeter" class="strength-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Password strength">
+          <div class="strength-bar"></div>
+        </div>
+        <span class="strength-text" id="strengthText">Weak</span>
+      </div>
+
+      <div class="field-group remember-group">
+        <input type="checkbox" id="remember" name="remember" value="1">
+        <label for="remember">Remember me on this device</label>
+      </div>
+
+      <button type="submit" id="submitBtn" class="submit-btn" disabled>Sign in</button>
+
+      <div class="divider"><span>or continue with</span></div>
+
+      <div class="social-group">
+        <button type="button" class="social-btn google" aria-label="Continue with Google">
+          <span class="social-icon">G</span>
+          <span class="social-label">Google</span>
+        </button>
+        <button type="button" class="social-btn github" aria-label="Continue with GitHub">
+          <span class="social-icon">&#128278;</span>
+          <span class="social-label">GitHub</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="success-state hidden" role="status" aria-live="polite">
+      <div class="success-icon">&#10003;</div>
+      <h2>Signed in successfully</h2>
+      <p>Redirecting you to your dashboard...</p>
+    </div>
+
+    <div id="lockoutBanner" class="lockout-banner hidden" role="alert" aria-live="polite">
+      Too many failed attempts. Try again in <span id="lockoutCountdown">30</span> seconds.
+    </div>
+
+    <div class="footer-links">
+      <a href="#" class="link">Forgot password?</a>
+      <a href="#" class="link">Create an account</a>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
